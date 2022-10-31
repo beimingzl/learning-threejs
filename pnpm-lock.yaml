@@ -4,9 +4,11 @@ importers:
 
   .:
     specifiers:
+      gsap: ^3.11.3
       parcel-bundler: ^1.12.5
       three: ^0.146.0
     dependencies:
+      gsap: registry.npmmirror.com/gsap/3.11.3
       parcel-bundler: registry.npmmirror.com/parcel-bundler/1.12.5
       three: registry.npmmirror.com/three/0.146.0
 
@@ -3614,6 +3616,12 @@ packages:
     dependencies:
       brfs: registry.npmmirror.com/brfs/1.6.1
       unicode-trie: registry.npmmirror.com/unicode-trie/0.3.1
+    dev: false
+
+  registry.npmmirror.com/gsap/3.11.3:
+    resolution: {integrity: sha512-xc/iIJy+LWiMbRa4IdMtdnnKa/7PXEK6NNzV71gdOYUVeTZN7UWnLU0fB7Hi1iwiz4ZZoYkBZPPYGg+2+zzFHA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/gsap/-/gsap-3.11.3.tgz}
+    name: gsap
+    version: 3.11.3
     dev: false
 
   registry.npmmirror.com/har-schema/2.0.0:
