@@ -22,13 +22,13 @@ scene.add(camera)
 
 // 导入纹理
 const textureLoader = new THREE.TextureLoader()
-const door = textureLoader.load(import('../assets/textrues/crate.gif'))
+const crate = textureLoader.load('./textrues/crate.gif')
 // 3. 添加物体
 // 3.1 创建几何体
 const cubeGeometry = new THREE.BoxBufferGeometry(1, 1, 1)
 const basicMaterial = new THREE.MeshBasicMaterial({
   color: "#ffff00",
-  map: door
+  map: crate
 })
 const cube = new THREE.Mesh(cubeGeometry, basicMaterial)
 scene.add(cube)
