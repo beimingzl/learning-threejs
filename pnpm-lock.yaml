@@ -6,10 +6,12 @@ importers:
     specifiers:
       gsap: ^3.11.3
       parcel-bundler: ^1.12.5
+      stats.js: ^0.17.0
       three: ^0.146.0
     dependencies:
       gsap: registry.npmmirror.com/gsap/3.11.3
       parcel-bundler: registry.npmmirror.com/parcel-bundler/1.12.5
+      stats.js: registry.npmmirror.com/stats.js/0.17.0
       three: registry.npmmirror.com/three/0.146.0
 
   packages/threejs-demo-01:
@@ -6454,6 +6456,12 @@ packages:
       shallow-copy: registry.npmmirror.com/shallow-copy/0.0.1
       static-eval: registry.npmmirror.com/static-eval/2.1.0
       through2: registry.npmmirror.com/through2/2.0.5
+    dev: false
+
+  registry.npmmirror.com/stats.js/0.17.0:
+    resolution: {integrity: sha512-hNKz8phvYLPEcRkeG1rsGmV5ChMjKDAWU7/OJJdDErPBNChQXxCo3WZurGpnWc6gZhAzEPFad1aVgyOANH1sMw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stats.js/-/stats.js-0.17.0.tgz}
+    name: stats.js
+    version: 0.17.0
     dev: false
 
   registry.npmmirror.com/statuses/2.0.1:

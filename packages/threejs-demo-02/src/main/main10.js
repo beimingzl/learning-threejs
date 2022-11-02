@@ -8,7 +8,7 @@ import gsap from "gsap";
 import {
   RGBELoader
 } from "three/examples/jsm/loaders/RGBELoader"
-
+import Stats from "stats.js"
 
 
 // 目标：环境贴图、经纬线贴图、HDR
@@ -121,3 +121,23 @@ window.addEventListener("resize", () => {
   //   设置渲染器的像素比
   renderer.setPixelRatio(window.devicePixelRatio);
 });
+
+
+// 帧率显示
+var stats = new Stats();
+stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom);
+
+function animate() {
+
+  stats.begin();
+
+  // monitored code goes here
+
+  stats.end();
+
+  requestAnimationFrame(animate);
+
+}
+
+requestAnimationFrame(animate);
