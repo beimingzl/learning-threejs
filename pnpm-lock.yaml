@@ -20,6 +20,18 @@ importers:
     dependencies:
       dat.gui: registry.npmmirror.com/dat.gui/0.7.9
 
+  packages/threejs-demo-02:
+    specifiers:
+      dat.gui: ^0.7.9
+    dependencies:
+      dat.gui: registry.npmmirror.com/dat.gui/0.7.9
+
+  packages/threejs-demo-03:
+    specifiers:
+      dat.gui: ^0.7.9
+    dependencies:
+      dat.gui: registry.npmmirror.com/dat.gui/0.7.9
+
 packages:
 
   registry.npmmirror.com/@ampproject/remapping/2.2.0:
