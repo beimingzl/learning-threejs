@@ -5,18 +5,16 @@ import {
 } from 'three/examples/jsm/controls/OrbitControls'
 // 导入 dat.gui
 import * as dat from 'dat.gui'
+import {
+  MeshBasicMaterial
+} from 'three'
 
 const gui = new dat.GUI()
 
 // console.log(THREE)
 
-// 灯光与阴影
-// a. 物体材质要满足对光照有反应 可以使用标准网格材质 MeshStandardMaterial
-// b. 设置渲染器开启阴影计算 renderer.shadowMap.enabled = true
-// c. 设置光照投射阴影 directionalLight.castShaow = true
-// d. 设置物体投射阴影 sphere.castShadow = true
-// c. 设置物体接收阴影 plane.receiveShadow = true
-// d. 设置阴影模糊度 
+// 点光源的属性与设置
+
 // 1.创建场景
 const scene = new THREE.Scene()
 
@@ -40,48 +38,62 @@ const sphere = new THREE.Mesh(sphereGeometry, material)
 sphere.castShadow = true
 scene.add(sphere)
 
-const planeGeometry = new THREE.PlaneBufferGeometry(10, 10)
+const planeGeometry = new THREE.PlaneBufferGeometry(50, 50)
 const plane = new THREE.Mesh(planeGeometry, material)
 plane.position.set(0, -1, 0)
 plane.rotation.x = -Math.PI / 2
 plane.receiveShadow = true
 scene.add(plane)
 
+const smallBall = new THREE.Mesh(new THREE.SphereBufferGeometry(0.1, 20, 20), new MeshBasicMaterial({
+  color: 0xff0000
+}))
+smallBall.position.set(2, 2, 2)
+
 
 // 灯光
 // 环境光
 const light = new THREE.AmbientLight(0xffffff, 0.5)
 scene.add(light)
-// 直线光源
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-directionalLight.position.set(10, 10, 10);
-directionalLight.castShadow = true;
-
-
+// 点光源
+const pointLight = new THREE.PointLight(0xff0000, 0.5);
+pointLight.position.set(2, 2, 2);
+pointLight.castShadow = true;
 // 设置阴影贴图模糊度
-directionalLight.shadow.radius = 20
+pointLight.shadow.radius = 20
 // 设置阴影贴图分辨率
-directionalLight.shadow.mapSize.set(2048, 2048)
-console.log(directionalLight.shadow);
+pointLight.shadow.mapSize.set(2048, 2048)
+pointLight.intensity = 3
+console.log(pointLight.shadow);
+// 聚光灯目标物体
+pointLight.target = sphere
+
+
+
 
 // 设置平行光投射相机的属性 ==> 超过一定距离不再渲染阴影
-directionalLight.shadow.camera.near = 0.5
-directionalLight.shadow.camera.far = 500
-directionalLight.shadow.camera.top = 5
-directionalLight.shadow.camera.bottom = -5
-directionalLight.shadow.camera.left = -5
-directionalLight.shadow.camera.right = 5
+// pointLight.shadow.camera.near = 0.5
+// pointLight.shadow.camera.far = 500
+// pointLight.shadow.camera.top = 5
+// pointLight.shadow.camera.bottom = -5
+// pointLight.shadow.camera.left = -5
+// pointLight.shadow.camera.right = 5
 
-scene.add(directionalLight);
+// scene.add(pointLight);
+// 将点光源绑定到小球上，并添加到场景中
+smallBall.add(pointLight)
+scene.add(smallBall)
 
-gui.add(directionalLight.shadow.camera, "near")
-  .min(0)
-  .max(20)
-  .step(0.1)
-  .onChange(() => {
-    // 更新摄像机矩阵，在任何参数被改变后必须被调用
-    directionalLight.shadow.camera.updateProjectionMatrix()
-  })
+// 通过改变球的位置，使聚光灯跟随球移动
+// gui.add(sphere.position, "x").min(-5).max(10).step(0.1).name("物体位置x")
+// // 聚光灯范围，角度；最大不可超过 90度
+// gui.add(pointLight, "angle").min(0).max(Math.PI / 2).step(0.01).name("聚光灯范围")
+// // 聚光灯照射距离
+gui.add(pointLight, "distance").min(0).max(50).name("聚光灯照射距离")
+// // 聚光灯衰减 ==> 中间向旁边衰减
+// gui.add(pointLight, "penumbra").min(0).max(1).name("聚光灯衰减")
+// // 聚光灯距离衰减 ==> 随着距离进行衰减  ==> 需要在物理模式下 physicallyCorrectights
+gui.add(pointLight, "decay").min(0).max(5).name("聚光灯距离衰减")
 
 
 
@@ -90,6 +102,7 @@ const renderer = new THREE.WebGLRenderer()
 // 4.1 设置渲染尺寸和大小
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.shadowMap.enabled = true
+renderer.physicallyCorrectLights = true
 // console.log(renderer); // 包含一个 canvas
 // 4.2 将 webgl 渲染的 canvas 添加到 body 中
 document.body.appendChild(renderer.domElement)
@@ -108,6 +121,12 @@ const clock = new THREE.Clock()
 
 // 6. 渲染函数，下一次动画帧渲染
 function render() {
+  // 点光源圆周运动
+  let time = clock.getElapsedTime()
+  smallBall.position.x = Math.sin(time) * 3
+  smallBall.position.z = Math.cos(time) * 3
+  // 上下横跳
+  smallBall.position.y = 2 + Math.sin(time * 3)
 
   controls.update()
   renderer.render(scene, camera)
