@@ -4,11 +4,13 @@ importers:
 
   .:
     specifiers:
+      dat.gui: ^0.7.9
       gsap: ^3.11.3
       parcel-bundler: ^1.12.5
       stats.js: ^0.17.0
       three: ^0.146.0
     dependencies:
+      dat.gui: registry.npmmirror.com/dat.gui/0.7.9
       gsap: registry.npmmirror.com/gsap/3.11.3
       parcel-bundler: registry.npmmirror.com/parcel-bundler/1.12.5
       stats.js: registry.npmmirror.com/stats.js/0.17.0
@@ -31,6 +33,12 @@ importers:
       dat.gui: ^0.7.9
     dependencies:
       dat.gui: registry.npmmirror.com/dat.gui/0.7.9
+
+  packages/threejs-demo-04:
+    specifiers:
+      cannon-es: ^0.20.0
+    dependencies:
+      cannon-es: registry.npmmirror.com/cannon-es/0.20.0
 
 packages:
 
@@ -2283,6 +2291,12 @@ packages:
     resolution: {integrity: sha512-lfXQ73oB9c8DP5Suxaszm+Ta2sr/4tf8+381GkIm1MLj/YdLf+rEDyDSRCzeltuyTVGm+/s18gdZ0q+Wmp8VsQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001427.tgz}
     name: caniuse-lite
     version: 1.0.30001427
+    dev: false
+
+  registry.npmmirror.com/cannon-es/0.20.0:
+    resolution: {integrity: sha512-eZhWTZIkFOnMAJOgfXJa9+b3kVlvG+FX4mdkpePev/w/rP5V8NRquGyEozcjPfEoXUlb+p7d9SUcmDSn14prOA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cannon-es/-/cannon-es-0.20.0.tgz}
+    name: cannon-es
+    version: 0.20.0
     dev: false
 
   registry.npmmirror.com/caseless/0.12.0:

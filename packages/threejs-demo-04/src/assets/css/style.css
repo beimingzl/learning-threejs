@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #0772a3;
+}
+
+canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+.page h1 {
+  margin: 60px;
+  font-size: 40px;
+}
+.page h3 {
+  font-size: 30px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
