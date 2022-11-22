@@ -10,10 +10,7 @@ import {
 } from 'three'
 import * as CANNON from 'cannon-es'
 
-// cannon-es 物理引擎的使用
-console.log(CANNON)
-
-
+// 碰撞事件监听
 
 // 1.创建场景
 const scene = new THREE.Scene()
@@ -69,6 +66,15 @@ floorBody.position.set(0, -5, 0)
 // 旋转地面位置
 floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2)
 world.addBody(floorBody)
+
+function HitEvent(e) {
+  console.log(e);
+  // 获取碰撞强度
+  const impactStrength = e.contact.getImpactVelocityAlongNormal()
+  console.log(impactStrength);
+}
+// 添加监听碰撞事件
+sphereBody.addEventListener("collide", HitEvent)
 
 
 
