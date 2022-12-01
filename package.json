@@ -4,16 +4,41 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev:vr-room": "cd packages/vr-room && pnpm run serve",
+    "build:vr-room": "cd packages/vr-room && pnpm run build",
+    "dev:threejs-demo-04": "cd packages/threejs-demo-04 && pnpm run dev",
+    "build:threejs-demo-04": "cd packages/threejs-demo-04 && pnpm run build",
+    "dev:threejs-demo-03": "cd packages/threejs-demo-03 && pnpm run dev",
+    "build:threejs-demo-03": "cd packages/threejs-demo-03 && pnpm run build",
+    "dev:threejs-demo-02": "cd packages/threejs-demo-02 && pnpm run dev",
+    "build:threejs-demo-02": "cd packages/threejs-demo-02 && pnpm run build",
+    "dev:threejs-demo-01": "cd packages/threejs-demo-01 && pnpm run dev",
+    "build:threejs-demo-01": "cd packages/threejs-demo-01 && pnpm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@types/node": "^18.11.9",
+    "@types/three": "^0.146.0",
+    "@types/webpack-env": "^1.18.0",
+    "core-js": "^3.8.3",
     "dat.gui": "^0.7.9",
     "gsap": "^3.11.3",
     "parcel-bundler": "^1.12.5",
     "stats.js": "^0.17.0",
-    "three": "^0.146.0"
+    "three": "^0.146.0",
+    "vue": "^3.2.13",
+    "webpack": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "less": "^4.0.0",
+    "less-loader": "^8.0.0",
+    "typescript": "~4.5.5"
   }
 }
